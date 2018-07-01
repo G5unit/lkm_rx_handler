@@ -5,7 +5,7 @@
   parse  packet IP/TCP headers.
 
 
-  Released under GPLv3 license
+  Released under GPLv3.0 license
 
   Created by github/G5unit on 4/5/2018.
 
