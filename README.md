@@ -1,6 +1,6 @@
 # lkm_rx_handler
-Example Linux Kernel Module to register rx_handler with netdevice (network interface).
-There is also code to parse IP & TCP headers in the handler function.
+Example Linux Kernel Module to register rx_handler with netdevice (network interface).<br>
+There is also code to check CPU ID hadnler function is running on, as well as parse IP & TCP headers in the handler function.
 
 To compile execute "make" in directory you download the code. "make clean" is also an option. 
 You will need linux kernel headers installed to compile successfuly.
