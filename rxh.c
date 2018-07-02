@@ -50,14 +50,6 @@ rx_handler_result_t rxhPacketIn(struct sk_buff **ppkt) {
     if(ip_header->protocol != 6) {
           return RX_HANDLER_PASS;
     }
-
-    /* check if fragmented packet,
-       frag_off is shifted left 2 places and checked if it is > 0; if so it is a fragmented packet
-    */
-    if(ip_header->frag_off << 2) {
-           printk(KERN_INFO "[RXH] Got fragmented packet\n");
-           return RX_HANDLER_PASS;
-    }
                                     
     /* Parse TCP header */
     tcp_header = (struct tcphdr *)skb_transport_header(pkt) ;
