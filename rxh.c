@@ -28,12 +28,12 @@ MODULE_AUTHOR("Faruk Grozdanic/G5unit");
 /* rxhPacketIn function is called when a packet is received on a registered netdevice */
 rx_handler_result_t rxhPacketIn(struct sk_buff **ppkt) {
     struct sk_buff* pkt;
-    pkt = *ppkt;
     struct iphdr *ip_header;
     int cpuid;
     struct tcphdr *tcp_header;
     uint8_t *tcp_headerflags;
-    
+
+    pkt = *ppkt;
     ip_header = (struct iphdr *)skb_network_header(pkt);
     
     /* Check if IPv4 packet */
