@@ -87,7 +87,9 @@ int registerRxHandlers(void) {
         printk(KERN_INFO "[RXH] Found [%s] netdevice\n", device->name);
         /* Register only net device with name lo (loopback) */
         if(!strcmp(device->name,"lo")) {
+            rtnl_lock();
             regerr = netdev_rx_handler_register(device,rxhPacketIn,NULL);
+            rtnl_unlock();
             if(regerr) {
                 printk(KERN_INFO "[RXH] Could not register handler with device [%s], error %i\n", device->name, regerr);
             } else {
@@ -109,7 +111,9 @@ void unregisterRxHandlers(void) {
     while (device) {
         /* Unregister only lo (loopback) */
         if(!strcmp(device->name,"lo")) {
+            rtnl_lock();
             netdev_rx_handler_unregister(device);
+            rtnl_unlock();
             printk(KERN_INFO "[RXH] Handler un-registered with device [%s]\n", device->name);
         }
         device = next_net_device(device);
