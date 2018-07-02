@@ -95,9 +95,10 @@ int registerRxHandlers(void) {
             } else {
                 printk(KERN_INFO "[RXH] Handler registered with device [%s]\n", device->name);
             }
-        }
-
-        device = next_net_device(device);
+        	  device = NULL;
+        } else {
+            device = next_net_device(device);
+	      }
     }
     read_unlock(&dev_base_lock);
 
@@ -115,8 +116,10 @@ void unregisterRxHandlers(void) {
             netdev_rx_handler_unregister(device);
             rtnl_unlock();
             printk(KERN_INFO "[RXH] Handler un-registered with device [%s]\n", device->name);
-        }
-        device = next_net_device(device);
+      	    device = NULL;
+        } else {
+            device = next_net_device(device);
+      	}
     }
     read_unlock(&dev_base_lock);
 }
