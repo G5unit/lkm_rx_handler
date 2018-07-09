@@ -89,7 +89,7 @@ int registerRxHandlers(void) {
         	  device = NULL;
         } else {
             device = next_net_device(device);
-	      }
+	}
     }
     read_unlock(&dev_base_lock);
 
